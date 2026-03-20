@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Farewell Seniors 🎓💛</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            color: white;
+
+            /* 🌈 GRADIENT + IMAGE COMBINED */
+            background:
+                linear-gradient(-45deg, rgba(255, 154, 158, 0.7), rgba(250, 208, 196, 0.7), rgba(251, 194, 235, 0.7), rgba(246, 211, 101, 0.7)),
+                url("bg.jpg");
+            /* 🔁 PUT YOUR IMAGE HERE */
+
+            background-size: 400% 400%, cover;
+            background-position: center;
+            animation: bgMove 12s ease infinite;
+        }
+
+        @keyframes bgMove {
+            0% {
+                background-position: 0% 50%, center;
+            }
+
+            50% {
+                background-position: 100% 50%, center;
+            }
+
+            100% {
+                background-position: 0% 50%, center;
+            }
+        }
+
+        .container {
+            max-width: 90%;
+            z-index: 2;
+        }
+
+        img,
+        video {
+            width: 90%;
+            max-height: 60vh;
+            border-radius: 25px;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transition: transform 0.5s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .caption {
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 18px;
+        }
+
+        h1,
+        h2 {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+        }
+
+        /* ⬅ BACK BUTTON */
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: black;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* 💖 HEARTS */
+        .heart {
+            position: fixed;
+            bottom: 0;
+            animation: float 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100vh);
+            }
+        }
+
+        /* ✨ CURSOR GLOW */
+        .cursor-glow {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #fff, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fadeOut 1s linear forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(3);
+            }
+        }
+    </style>
+</head>
+
+<body onclick="handleTap(event)">
+
+    <div class="back-btn" onclick="prevMemory(event)">⬅ Back</div>
+
+    <div class="container" id="content">
+        <h1>🎓 Farewell Seniors 💛</h1>
+    </div>
+
+    <script>
+
+        let memories = [
+            { type: "text", text: "💫 Always junior of our seniors..." },
+
+            { type: "image", src: "image 1.jpeg", caption: "The beginning 💛" },
+            { type: "image", src: "ladies.jpeg", caption: "Ladies Ranuvapadai 😄" },
+            { type: "image", src: "image 3.jpeg", caption: "Unforgettable days 💖" },
+            { type: "image", src: "image 4.jpeg", caption: "The Gang 📚" },
+            { type: "image", src: "image 5.jpeg", caption: "Smiles & laughter 😊" },
+            { type: "image", src: "image 6.jpeg", caption: "Team spirit 💪" },
+            { type: "image", src: "image 7.jpeg", caption: "Maaja vh 💫" },
+            { type: "image", src: "image 8.jpeg", caption: "Namma dha 🎓" },
+            { type: "image", src: "image 9.jpeg", caption: "Last Pongal 💛" },
+            { type: "image", src: "image 10.jpeg", caption: "One last time 💖" },
+
+            { type: "video", src: "video.mp4", caption: "Rombo la illa but lite ah miss panuvom 🎥" },
+
+            { type: "text", text: "💛 You didn’t just show us classrooms… you showed us life 💛" }
+        ];
+
+        let index = 0;
+
+        /* 👉 TAP NAVIGATION */
+        function handleTap(e) {
+            let width = window.innerWidth;
+
+            if (e.clientX < width / 2) {
+                prevMemory(e);
+            } else {
+                nextMemory();
+            }
+        }
+
+        /* 👉 NEXT */
+        function nextMemory() {
+            if (index >= memories.length) return;
+            showMemory();
+            index++;
+        }
+
+        /* ⬅ BACK */
+        function prevMemory(e) {
+            e.stopPropagation();
+            if (index > 1) {
+                index -= 2;
+                showMemory();
+                index++;
+            }
+        }
+
+        /* 🎬 DISPLAY */
+        function showMemory() {
+            let content = document.getElementById("content");
+            let item = memories[index];
+
+            content.innerHTML = "";
+
+            if (item.type === "text") {
+                content.innerHTML = `<h2>${item.text}</h2>`;
+            }
+
+            if (item.type === "image") {
+                content.innerHTML = `
+            <img src="${item.src}">
+            <p class="caption">${item.caption}</p>
+        `;
+            }
+
+            if (item.type === "video") {
+                content.innerHTML = `
+            <video src="${item.src}" controls></video>
+            <p class="caption">${item.caption}</p>
+        `;
+            }
+        }
+
+        /* 💖 HEARTS */
+        setInterval(() => {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = ["💛", "💖", "🎓"][Math.floor(Math.random() * 3)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 400);
+
+
+    </script>
+
+</body>
+
+</html>
