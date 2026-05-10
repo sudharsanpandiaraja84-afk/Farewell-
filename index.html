@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Yellow Person 💛</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            color: white;
+
+            /* 🌈 Animated Background */
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #f6d365);
+            background-size: 400% 400%;
+            animation: bgMove 12s ease infinite;
+        }
+
+        @keyframes bgMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* 💛 PHOTO SWIPE SECTION */
+        .photo-container {
+            width: 100%;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .photo-slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            padding: 20px;
+        }
+
+        .photo-slide img {
+            width: 90%;
+            max-height: 70vh;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .caption {
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 18px;
+            border-radius: 15px;
+            font-size: 18px;
+        }
+
+        /* 🎵 SONG SECTION */
+        .song-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        iframe {
+            margin-top: 15px;
+            border-radius: 12px;
+        }
+
+        /* 💖 FINAL PAGE */
+        .final-img {
+            width: 90%;
+            max-width: 400px;
+            border-radius: 25px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .final-text {
+            margin-top: 20px;
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* 💖 Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            animation: float 6s linear infinite;
+            font-size: 22px;
+            z-index: 999;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 💛 INTRO -->
+    <section>
+        <h1>💛 Happieee Birthday 💛</h1>
+        <h2>Swipe Up ⬆️</h2>
+    </section>
+
+    <!-- 📸 ALL PHOTOS IN ONE SWIPE SECTION -->
+    <div class="photo-container">
+
+        <div class="photo-slide">
+            <img src="img1.jpg" alt="">
+            <p class="caption">First memory 💛</p>
+        </div>
+
+        <div class="photo-slide">
+            <img src="img2.jpg" alt="">
+            <p class="caption">Beautiful moment 💖</p>
+        </div>
+
+        <div class="photo-slide">
+            <img src="img3.jpg" alt="">
+            <p class="caption"> 💛</p>
+        </div>
+
+        <div class="photo-slide">
+            <img src="img4.jpg" alt="">
+            <p class="caption">Unforgettable 💫</p>
+        </div>
+
+        <div class="photo-slide">
+            <img src="img5.jpg" alt="">
+            <p class="caption">Always special 💛</p>
+        </div>
+
+        <div class="photo-slide">
+            <img src="img6.jpg" alt="">
+            <p class="caption">Forever us 💖</p>
+        </div>
+
+    </div>
+
+    <!-- 🎵 SONG PAGE -->
+    <section>
+
+        <div class="song-box">
+            <h2>💛 May be your fav 💛</h2>
+
+            <p>🎵 Song 1</p>
+            <iframe src="https://open.spotify.com/embed/track/7pk4KSPgRu0QPfYUaT9VEd" width="100%" height="80"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+            <p>🎵 Song 2</p>
+            <iframe src="https://open.spotify.com/embed/track/11dFghVXANMlKmJXsNCbNl" width="100%" height="80"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+            <p>🎵 Song 3</p>
+            <iframe src="https://open.spotify.com/embed/track/7qEHsqek33rTcFNT9PFqLf" width="100%" height="80"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+
+    </section>
+
+    <!-- 💖 FINAL PAGE -->
+    <section>
+
+        <img src="final.jpg" class="final-img">
+
+        <div class="final-text">
+            💛 Thank You For Everything 💛
+        </div>
+
+    </section>
+
+    <script>
+
+        /* 💖 FLOATING HEARTS */
+        setInterval(() => {
+
+            let heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = ["💛", "💖", "💗"][Math.floor(Math.random() * 3)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+
+        }, 400);
+
+    </script>
+
+</body>
+
+</html>
